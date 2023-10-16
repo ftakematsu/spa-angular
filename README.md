@@ -1,6 +1,23 @@
-# SpaAngular
+# Execução do projeto
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+
+## Comandos a serem executados
+
+`npm install -g @angular/cli`
+
+`npm install -g yarn`
+
+`yarn install`
+
+Abrir o PowerShell em modo de administrador e executar o comando:
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
+
+## Tailwind CSS
+
+Seguir os passos do tutorial disponível neste [link](https://tailwindcss.com/docs/guides/angular).
+
+
 
 ## Development server
 
