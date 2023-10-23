@@ -1,6 +1,6 @@
 # Execução do projeto
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+Este projeto foi desenvolvido com o [Angular CLI](https://github.com/angular/angular-cli) versão 16.
 
 ## Comandos a serem executados
 
@@ -13,32 +13,24 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Abrir o PowerShell em modo de administrador e executar o comando:
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
+## Material Angular
+
+Este projeto utiliza os componentes do Material Angular e foi instalado seguindo os passos deste [link](https://material.angular.io/guide/getting-started).
+
 ## Tailwind CSS
 
-Seguir os passos do tutorial disponível neste [link](https://tailwindcss.com/docs/guides/angular).
+A instalação do Tailwind CSS foi feito seguindo os passos do tutorial disponível neste [link](https://tailwindcss.com/docs/guides/angular).
 
 
+## Execução em modo de desenvolvedor
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Execute o comando `ng serve` para executar o comando no modo de desenvolvimento. Acesse o sistema no navegador pela URL `http://localhost:4200/`. A aplicação será atualizada automaticamente quando algum arquivo-fonte do projeto for atualizado.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Execute `ng generate component component-name` para gerar automaticamente um conjunto de arquivos via code scaffolding. Você pode gerar diversos arquivos, como `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `ng build --prod` para compilar o projeto e gerar uma versão de produção, isto é, o projeto compilado para HTML/JavaScript. Todos os artefatos estarão na pasta `dist/`.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
