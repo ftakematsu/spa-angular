@@ -8,11 +8,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { HelloComponent } from './hello/hello.component';
 
 
 @NgModule({
   declarations: [
-    IndexComponent
+    IndexComponent,
+    HelloComponent
   ],
   imports: [
     CommonModule,

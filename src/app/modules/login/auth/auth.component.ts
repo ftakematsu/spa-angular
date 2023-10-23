@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -7,18 +10,36 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
-  email: string;
-  senha: string;
+  loginForm: FormGroup;
 
-  constructor(private service: AuthService) {
-    this.email = "";
-    this.senha = "";
+  constructor(
+    private service: AuthService,
+    private router: Router
+  ) {
+    this.loginForm = new FormGroup({
+      email: new FormControl(''),
+      senha: new FormControl('')
+    });
   }
 
   fazerLogin(): void {
-    this.service.login(this.email, this.senha).subscribe((response) => {
-      console.log(response);
-    });
+    
+    this.service.login(
+      this.loginForm.controls['email'].value, 
+      this.loginForm.controls['senha'].value
+    ).subscribe(
+      {
+        next: (response) => {
+          console.log(response);
+          // Navegação automática para a rota
+          this.router.navigate(['/hello']);
+        },
+        error: (err) => {
+          //console.log(err);
+          Swal.fire("Login", err.error.mensagem, 'error');
+        }
+      }
+    );
   }
 
 }

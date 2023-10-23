@@ -1,19 +1,21 @@
 <div class="p-5">
-    <p>
-        <mat-form-field>
-            <mat-label>Usuário</mat-label>
-            <input matInput [(ngModel)]="email" placeholder="Seu e-mail">
-            <mat-icon matSuffix>mail</mat-icon>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field>
-            <mat-label>Senha</mat-label>
-            <input type="password" [(ngModel)]="senha" matInput placeholder="Sua senha">
-            <mat-icon matSuffix>security</mat-icon>
-        </mat-form-field>
-    </p>
-    <p>
-        <button mat-raised-button color="warn" (click)="fazerLogin()">Entrar</button>
-    </p>
+    <form [formGroup]="loginForm">
+        <p>
+            <mat-form-field>
+                <mat-label>Usuário</mat-label>
+                <input matInput formControlName="email" placeholder="Seu e-mail">
+                <mat-icon matSuffix>mail</mat-icon>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <mat-label>Senha</mat-label>
+                <input type="password" formControlName="senha" matInput placeholder="Sua senha">
+                <mat-icon matSuffix>security</mat-icon>
+            </mat-form-field>
+        </p>
+        <p>
+            <button mat-raised-button color="warn" (click)="fazerLogin()">Entrar</button>
+        </p>
+    </form>
 </div>
