@@ -1,8 +1,8 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { AuthService } from "../shared/services/auth.service";
 import { Observable } from "rxjs";
 import { addToken } from "../config/http-header.const";
+import { AuthService } from "../modules/login/services/auth.service";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -22,7 +22,6 @@ export class TokenInterceptor implements HttpInterceptor {
         return next.handle(req);
     }
 
-      
     private _isBypassUrls(url: string): boolean {
         return this.bypassUris.some((uri) => url.includes(uri));
     }
