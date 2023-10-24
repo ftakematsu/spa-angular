@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthUser } from '../models/auth-user';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class AuthService {
   urlAPI: string;
 
   constructor(private http: HttpClient) { 
-    this.urlAPI = "http://127.0.0.1:8000/api/"
+    this.urlAPI = environment.apiUrl
   }
 
   setAccessToken(token: string): void {
@@ -25,11 +27,9 @@ export class AuthService {
     localStorage.removeItem('access_token');
   }
 
-  login(usuario: string, senha: string): Observable<any> {
-    return this.http.post<any>(this.urlAPI + "auth", {
-      login: usuario,
-      password: senha
-    });
+  login(dadosLogin: AuthUser): Observable<any> {
+    console.log(dadosLogin);
+    return this.http.post<any>(this.urlAPI + "auth", dadosLogin);
   }
 
 }

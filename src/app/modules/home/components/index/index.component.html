@@ -1,20 +1,22 @@
-<div class="flex justify-center bg-yellow-300 shadow-xl">
-    <p class="text-blue-600 font-bold uppercase">
-        index works!
+<app-sidenav>
+    <div class="flex justify-center bg-yellow-300 shadow-xl">
+        <p class="text-blue-600 font-bold uppercase">
+            index works!
+        </p>
+    </div>
+
+    <p class="p-5 flex justify-center content-center items-center space-x-2">
+        <mat-form-field>
+            <mat-label>Seu nome</mat-label>
+            <input matInput [(ngModel)]="nomeDigitado" placeholder="Nome completo">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="enviar()">
+            Enviar
+        </button>
     </p>
-</div>
 
-<p class="p-5 flex justify-center content-center items-center space-x-2">
-    <mat-form-field>
-        <mat-label>Seu nome</mat-label>
-        <input matInput [(ngModel)]="nomeDigitado" placeholder="Nome completo">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
-    <button mat-flat-button color="primary" (click)="enviar()">
-        Enviar
-    </button>
-</p>
-
-<p class="text-center">
-    Seu nome: {{nomeDigitado}}
-</p>
+    <p class="text-center">
+        Seu nome: {{nomeDigitado}}
+    </p>
+</app-sidenav>
