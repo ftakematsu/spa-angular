@@ -32,10 +32,16 @@ export class AuthService {
     });
   }
 
+  /**
+   * Passando o token do usuário autenticado para a requisição.
+   */
   usuarioLogado(): Observable<any> {
-    let header: HttpHeaders = new HttpHeaders();
-    header.append('Bearer', this.getAccessToken());
-    return this.http.get<any>(this.urlAPI + "auth_user", {headers: header});
+    // Cabeçalho da requisição HTTP
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.getAccessToken() 
+    });
+    return this.http.get<any>(this.urlAPI + "auth_user", {headers});
   }
 
 }
