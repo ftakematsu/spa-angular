@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AuthComponent {
   loginForm: FormGroup;
+  nomeVisitante: string;
 
   constructor(
     private service: AuthService,
@@ -20,6 +21,7 @@ export class AuthComponent {
       email: new FormControl(''),
       senha: new FormControl('')
     });
+    this.nomeVisitante = this.service.nomeVisitante;
   }
 
   fazerLogin(): void {
@@ -31,6 +33,7 @@ export class AuthComponent {
       {
         next: (response) => {
           console.log(response);
+          this.service.setAccessToken(response.token);
           // Navegação automática para a rota
           this.router.navigate(['/hello']);
         },
@@ -40,6 +43,10 @@ export class AuthComponent {
         }
       }
     );
+  }
+
+  voltarHome() {
+    this.router.navigate(['']);
   }
 
 }

@@ -6,7 +6,7 @@
 
 <p class="p-5 flex justify-center content-center items-center space-x-2">
     <mat-form-field>
-        <mat-label>Seu nome</mat-label>
+        <mat-label>Quem é você?</mat-label>
         <input matInput [(ngModel)]="nomeDigitado" placeholder="Nome completo">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
@@ -15,6 +15,14 @@
     </button>
 </p>
 
-<p class="text-center">
-    Seu nome: {{nomeDigitado}}
-</p>
+<div *ngIf="nomeDigitado.length>0">
+    <p class="text-center">
+        Seu nome: {{nomeDigitado}}
+    </p>
+
+    <p class="flex justify-center">
+        <button (click)="irParaLogin()" mat-button color="primary">
+            Ir para tela de login
+        </button>
+    </p>
+</div>

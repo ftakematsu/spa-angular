@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
+  nomeVisitante: string = "";
   urlAPI: string;
 
   constructor(private http: HttpClient) { 
@@ -30,6 +30,12 @@ export class AuthService {
       login: usuario,
       password: senha
     });
+  }
+
+  usuarioLogado(): Observable<any> {
+    let header: HttpHeaders = new HttpHeaders();
+    header.append('Bearer', this.getAccessToken());
+    return this.http.get<any>(this.urlAPI + "auth_user", {headers: header});
   }
 
 }
