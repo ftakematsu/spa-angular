@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthUser } from '../models/auth-user';
@@ -30,6 +30,18 @@ export class AuthService {
   login(dadosLogin: AuthUser): Observable<any> {
     console.log(dadosLogin);
     return this.http.post<any>(this.urlAPI + "auth", dadosLogin);
+  }
+
+  /**
+   * Passando o token do usuário autenticado para a requisição.
+   */
+  usuarioLogado(): Observable<any> {
+    // Cabeçalho da requisição HTTP
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.getAccessToken() 
+    });
+    return this.http.get<any>(this.urlAPI + "auth_user", {headers});
   }
 
 }
