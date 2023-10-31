@@ -6,7 +6,7 @@ Este projeto foi desenvolvido com o [Angular CLI](https://github.com/angular/ang
 
 `npm install -g @angular/cli`
 
-`npm install -g @yarn`
+`npm install -g yarn`
 
 `yarn install`
 

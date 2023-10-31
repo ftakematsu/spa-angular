@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthUser } from '../models/auth-user';
 import { environment } from 'src/environments/environment.development';
+import { ACCESS_TOKEN_VAR } from 'src/app/consts/system-consts';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +12,21 @@ export class AuthService {
 
   urlAPI: string;
 
+
   constructor(private http: HttpClient) { 
-    this.urlAPI = environment.apiUrl
+    this.urlAPI = environment.apiUrl;
   }
 
   setAccessToken(token: string): void {
-    localStorage.setItem('access_token', token);
+    localStorage.setItem(ACCESS_TOKEN_VAR, token);
   }
 
   getAccessToken(): string {
-    return localStorage.getItem('access_token')!;
+    return localStorage.getItem(ACCESS_TOKEN_VAR)!;
   }
 
   clearAccessToken(): void {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem(ACCESS_TOKEN_VAR);
   }
 
   login(dadosLogin: AuthUser): Observable<any> {
@@ -37,11 +39,15 @@ export class AuthService {
    */
   usuarioLogado(): Observable<any> {
     // Cabeçalho da requisição HTTP
-    const headers = new HttpHeaders({ 
+    /*const headers = new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.getAccessToken() 
-    });
-    return this.http.get<any>(this.urlAPI + "auth_user", {headers});
+    });*/
+    return this.http.get<any>(this.urlAPI + "user");
+  }
+
+  novoUsuario(dadosUsuario: any) : Observable<any> {
+    return this.http.post<any>(this.urlAPI + "user", dadosUsuario);
   }
 
 }

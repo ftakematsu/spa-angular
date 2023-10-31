@@ -37,9 +37,12 @@ export class AuthComponent {
       );
       this.service.login(dadosLogin).subscribe({
         next: (response) => {
+          console.log(response);
+          this.service.setAccessToken(response.token);
           this.router.navigate(['/hello']);
         },
         error: (response) => {
+          console.error(response);
           Swal.fire('Login', response.error.mensagem, 'error');
         }
       });
