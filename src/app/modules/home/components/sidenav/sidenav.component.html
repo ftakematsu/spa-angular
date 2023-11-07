@@ -8,8 +8,11 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <button mat-raised-button color="primary" (click)="irParaPaginaLogin()">
+      <button *ngIf="!user" mat-raised-button color="primary" (click)="irParaPaginaLogin()">
         Login
+      </button>
+      <button *ngIf="user" mat-raised-button color="primary" (click)="fazerLogoff()">
+        Logout
       </button>
 
     </nav>

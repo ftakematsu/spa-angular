@@ -11,10 +11,18 @@ import { ACCESS_TOKEN_VAR } from 'src/app/consts/system-consts';
 export class AuthService {
 
   urlAPI: string;
-
+  private _user: any;
 
   constructor(private http: HttpClient) { 
     this.urlAPI = environment.apiUrl;
+  }
+
+  setUser(user: any): void {
+    this._user = user;
+  }
+
+  getUser(): any {
+    return this._user;
   }
 
   setAccessToken(token: string): void {
@@ -32,6 +40,10 @@ export class AuthService {
   login(dadosLogin: AuthUser): Observable<any> {
     console.log(dadosLogin);
     return this.http.post<any>(this.urlAPI + "auth", dadosLogin);
+  }
+
+  logout(): Observable<any> {
+    return this.http.post<any>(this.urlAPI + "logout", {});
   }
 
   /**

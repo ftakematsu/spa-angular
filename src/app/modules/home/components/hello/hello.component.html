@@ -1,4 +1,6 @@
-<h1 *ngIf="usuario">Seja bem vindo(a), {{ usuario.name }}!</h1>
-
-
-<button (click)="novoUsuarioFake()">Cadastrar novo usuário</button>
+<app-sidenav>
+    <div class="m-5">
+        <h1 *ngIf="usuario">Seja bem vindo(a), {{ usuario.name }}!</h1>
+        <button (click)="novoUsuarioFake()">Cadastrar novo usuário</button>
+    </div>
+</app-sidenav>

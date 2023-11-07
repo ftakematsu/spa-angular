@@ -38,7 +38,7 @@ export class HelloComponent implements OnInit {
       next: (response) => {
         Swal.fire("Novo usuário", "Usuário cadastrado com sucesso!", 'success')
       }
-    })
+    });
   }
 
 }
