@@ -1,7 +1,7 @@
 # Use a imagem Node.js 18 como base
 FROM node:18
 
-# Instale o Angular CLI e o Yarn globalmente no container
+# Instale o Angular CLI globalmente no container
 RUN npm install -g @angular/cli@16
 
 # Não necessita, pois imagens node normalmente já vem com Yarn

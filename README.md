@@ -14,25 +14,16 @@ Abrir o PowerShell em modo de administrador e executar o comando:
 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
-## Comandos a serem executados no Docker
-
-Antes de executar os comandos a seguir, dê um `yarn install` no seu projeto local.
-
-### Construa a imagem Docker
-No terminal, no diretório raiz do projeto (onde está o Dockerfile) execute o seguinte comando para criar a imagem Docker:
-
-`docker build -t spa-angular:latest .`
-
-### Execute o contêiner
-Após a construção da imagem, você pode executar o contêiner com o seguinte comando:
-
-`docker run -d -p 4500:4200 -v D:\Workspace\laragon\www\spa-angular:/app --name web-angular spa-angular:latest`
+## Comandos a serem executados no Docker usando docker-compose
+ - Download do Docker (se estiver no Windows, utilize a instalação com WSL).
+   - Certifique-se de que o WSL2 esteja instalado. Siga as orientações neste [link](https://docs.microsoft.com/windows/wsl/wsl2-kernel).
+ - Execute o comando `docker-compose up -d`
 
 Acesse o sistema em `http://localhost:4500`. 
 
 Para parar o container, execute: `docker stop {ID_CONTAINER}`. Veja a lista de containers em execução em `docker ps`.
 
-Acesse o container em : `docker exec -it web-angular /bin/bash`
+Acesse o container em : `docker exec -it angular-app /bin/bash`
 
 
 # Bibliotecas e recursos utilizados
