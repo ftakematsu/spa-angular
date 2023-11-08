@@ -19,12 +19,16 @@ export class HelloComponent implements OnInit {
    * Método carregado na inicialização da página.
    */
   ngOnInit(): void {
-    this.service.usuarioLogado().subscribe({
+    /*this.service.usuarioLogado().subscribe({
       next: (response) => {
         // console.log(response);
         this.usuario = response.usuario;
         console.log(this.usuario);
       }
+    });*/
+    this.service.getUser().subscribe((user) => {
+      this.usuario = user;
+      console.log(this.usuario);
     });
   }
 

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthUser } from '../models/auth-user';
 import { environment } from 'src/environments/environment.development';
 import { ACCESS_TOKEN_VAR } from 'src/app/consts/system-consts';
@@ -11,18 +11,18 @@ import { ACCESS_TOKEN_VAR } from 'src/app/consts/system-consts';
 export class AuthService {
 
   urlAPI: string;
-  private _user: any;
+  private _user = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) { 
     this.urlAPI = environment.apiUrl;
   }
 
   setUser(user: any): void {
-    this._user = user;
+    this._user.next(user);
   }
 
-  getUser(): any {
-    return this._user;
+  getUser(): Observable<any> {
+    return this._user.asObservable();
   }
 
   setAccessToken(token: string): void {

@@ -14,10 +14,11 @@ WORKDIR /app
 COPY . .
 
 # Instale as dependências do projeto
-RUN yarn install
+# RUN yarn install
 
 # Exponha as portas
 EXPOSE 4200
 
-# Execute o aplicativo Angular
-CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
+# Execute o aplicativo Angular--poll 2000
+
+CMD ["ng", "serve", "--host", "0.0.0.0", "--poll=2000", "--port", "4200", "--disable-host-check"]

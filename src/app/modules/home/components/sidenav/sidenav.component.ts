@@ -19,7 +19,7 @@ export class SidenavComponent {
       next: (response) => {
         console.log("Usuário", response);
         this.authService.setUser(response.usuario);
-        this.user = this.authService.getUser();
+        this.user = response.usuario;
       },
       error: (response) => {
         console.log("Status: " + response.status);
@@ -36,6 +36,7 @@ export class SidenavComponent {
     this.authService.logout().subscribe({
       next: (response) => {
         console.log(response);
+        this.router.navigate(['/']);
       }
     });
     //this.authService.clearAccessToken();

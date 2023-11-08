@@ -8,8 +8,3 @@ services:
       - "4500:4200"
     volumes:
       - .:/app
-    networks:
-      - my_network
-    command: ["npm", "start"]
-networks:
-  my_network:
