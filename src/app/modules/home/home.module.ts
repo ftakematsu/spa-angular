@@ -11,13 +11,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HelloComponent } from './components/hello/hello.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
   declarations: [
     IndexComponent,
     SidenavComponent,
-    HelloComponent
+    HelloComponent,
+    NovoUsuarioComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +33,11 @@ import { HelloComponent } from './components/hello/hello.component';
     MatIconModule,
     FormsModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSortModule, 
+    MatPaginatorModule
   ]
 })
 export class HomeModule { }
