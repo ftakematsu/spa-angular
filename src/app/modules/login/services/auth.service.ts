@@ -41,7 +41,7 @@ export class AuthService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.getAccessToken() 
     });
-    return this.http.get<any>(this.urlAPI + "auth_user", {headers});
+    return this.http.get<any>(this.urlAPI + "user", {headers});
   }
 
 }
