@@ -9,12 +9,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { HelloComponent } from './hello/hello.component';
+import { MatTableModule } from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.component';
 
 
 @NgModule({
   declarations: [
     IndexComponent,
-    HelloComponent
+    HelloComponent,
+    NovoUsuarioComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,9 @@ import { HelloComponent } from './hello/hello.component';
     MatFormFieldModule,
     MatIconModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatDialogModule
   ]
 })
 export class HomeModule { }
