@@ -9,6 +9,12 @@
         <mat-label>E-mail</mat-label>
         <input matInput [(ngModel)]="emailUsuario">
     </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Senha</mat-label>
+        <input matInput [(ngModel)]="senhaUsuario">
+    </mat-form-field>
+
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="enviarUsuario()">Enviar</button>

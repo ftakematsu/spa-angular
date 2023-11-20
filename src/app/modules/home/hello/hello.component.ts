@@ -4,6 +4,7 @@ import { MatTable } from '@angular/material/table';
 import { Usuario } from '../models/usuario';
 import { MatDialog } from '@angular/material/dialog';
 import { NovoUsuarioComponent } from '../components/novo-usuario/novo-usuario.component';
+import { UsersService } from '../services/users.service';
 
 export interface PeriodicElement {
   name: string;
@@ -39,13 +40,33 @@ export class HelloComponent implements OnInit {
   dataSource: Usuario[] = [];
 
   constructor(
-    private service: AuthService, private dialog: MatDialog
+    private service: AuthService, private dialog: MatDialog, 
+    private userService: UsersService
   ) {
     this.listaUsuarios = [
-      { id: 1, nome: "Fulano de Tal", email: "fulano@mail.com", data_criacao: "2023-11-13 15:56:00" },
-      { id: 2, nome: "Beltrano de Tal", email: "beltrano@mail.com", data_criacao: "2023-11-13 15:58:00" },
     ];
     this.dataSource = [...this.listaUsuarios];
+  }
+
+  atualizarListaUsuarios() {
+    this.dataSource = [];
+    this.userService.buscarUsuarios().subscribe({
+      next: (response) => {
+        console.log(response);
+        for (let usuario of response) {
+          this.dataSource.push(
+            new Usuario(
+              usuario.id,
+              usuario.name,
+              usuario.email,
+              usuario.created_at,
+              ""
+            )
+          );
+        }
+      }
+    });
+    this.table.renderRows();
   }
 
   /**
@@ -55,6 +76,7 @@ export class HelloComponent implements OnInit {
     this.service.usuarioLogado().subscribe({
       next: (response) => {
         console.log(response);
+        this.atualizarListaUsuarios();
       }
     });
   }
@@ -66,7 +88,8 @@ export class HelloComponent implements OnInit {
   addData() {
     let dialogRef = this.dialog.open(NovoUsuarioComponent);
     dialogRef.afterClosed().subscribe(usuario => {
-      this.dataSource.push(usuario);
+      //this.dataSource.push(usuario);
+      this.atualizarListaUsuarios();
       this.table.renderRows();
     });
   }

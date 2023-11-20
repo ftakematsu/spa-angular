@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Usuario } from '../../models/usuario';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-novo-usuario',
@@ -10,8 +11,12 @@ import { Usuario } from '../../models/usuario';
 export class NovoUsuarioComponent {
   nomeUsuario: string = "";
   emailUsuario: string = "";
+  senhaUsuario: string = "";
 
-  constructor(private dialogRef: MatDialogRef<NovoUsuarioComponent>) {
+  constructor(
+    private dialogRef: MatDialogRef<NovoUsuarioComponent>,
+    private userService: UsersService
+  ) {
 
   }
 
@@ -21,9 +26,14 @@ export class NovoUsuarioComponent {
       Math.floor(Math.random()*100000),
       this.nomeUsuario,
       this.emailUsuario,
-      "2023-11-13 16:30:00"
+      "2023-11-13 16:30:00",
+      this.senhaUsuario
     );
-    this.dialogRef.close(usuario);
+
+    this.userService.cadastrarUsuario(usuario).subscribe((response) => {
+      this.dialogRef.close(response);
+    });
+    
   }
 
 
