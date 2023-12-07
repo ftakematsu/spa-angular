@@ -1,0 +1,25 @@
+<h1>Meus contatos</h1>
+
+<div class="m-10">
+
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" [(ngModel)]="nome">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <input matInput type="text" [(ngModel)]="telefone">
+    </mat-form-field>
+
+    <button mat-button color="primary" (click)="cadastrarContato()">Cadastrar</button>
+
+</div>
+
+<div class="m-10">
+    <div *ngFor="let contato of listaContatos">
+        <span>{{contato.name}}</span>
+        <span>{{contato.phone}}</span>
+    </div>
+</div>
+
