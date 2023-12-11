@@ -41,7 +41,31 @@ export class IndexComponent implements OnInit {
       Swal.fire(
         "Sucesso", "Contato cadastrado com sucesso!", 'success'
       );
+      this.atualizarLista();
     });
   }
+
+  excluir(contato: any) {
+    Swal.fire({
+      text: "Tem certeza?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: "Confirmar",
+      cancelButtonText: "Cancelar"
+    }).then((response) => {
+      if (response.isConfirmed) {
+        this.service.remover(contato.id).subscribe((response) => {
+          this.atualizarLista();
+        })
+      }
+    });
+  }
+
+  visualizar(contato: any) {
+    
+
+  }
+
+
 
 }

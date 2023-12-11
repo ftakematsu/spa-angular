@@ -21,4 +21,8 @@ export class ContactsService {
     return this.http.get(this.apiUrl + "/contacts");
   }
 
+  remover(id: number): Observable<any> {
+    return this.http.delete(this.apiUrl + "/contact/" + id);
+  }
+
 }

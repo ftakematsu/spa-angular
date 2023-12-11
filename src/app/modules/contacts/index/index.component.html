@@ -16,10 +16,26 @@
 
 </div>
 
-<div class="m-10">
-    <div *ngFor="let contato of listaContatos">
-        <span>{{contato.name}}</span>
-        <span>{{contato.phone}}</span>
-    </div>
-</div>
+<mat-list class="m-10">
+    <mat-list-item *ngFor="let contato of listaContatos">
+        <div class="flex justify-between">
+            <span>{{contato.name}}</span>
+            <span>{{contato.phone}}</span>
+            <span>
+                <button [matMenuTriggerFor]="menu" mat-icon-button>
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu>
+                    <button mat-menu-item (click)="visualizar(contato)">
+                        Visualizar
+                    </button>
+                    <button mat-menu-item (click)="excluir(contato)">
+                        Excluir
+                    </button>
+                </mat-menu>
+            </span>
+        </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
 

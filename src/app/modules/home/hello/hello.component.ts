@@ -64,9 +64,11 @@ export class HelloComponent implements OnInit {
             )
           );
         }
+        this.table.renderRows();
       }
     });
-    this.table.renderRows();
+    
+    
   }
 
   /**
