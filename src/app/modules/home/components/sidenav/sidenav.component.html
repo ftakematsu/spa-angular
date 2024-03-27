@@ -1,0 +1,29 @@
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side" class="p-5">
+      <button *ngIf="!user; else botaoSairMenu" mat-button (click)="irParaPaginaLogin()">Fazer login</button>
+      <ng-template #botaoSairMenu>
+        <button mat-raised-button color="primary" (click)="fazerLogoff()">
+          Sair
+        </button>
+      </ng-template>
+    </mat-drawer>
+
+    <nav class="bg-neutral-200 p-5 flex justify-between">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <button *ngIf="!user" mat-raised-button color="primary" (click)="irParaPaginaLogin()">
+        Fazer login
+      </button>
+      <button *ngIf="user" mat-raised-button color="primary" (click)="fazerLogoff()">
+        Sair
+      </button>
+
+    </nav>
+
+    <div class="w-full p-5 h-full">
+      <ng-content></ng-content>
+    </div>
+</mat-drawer-container>
+  

@@ -6,6 +6,7 @@ import { AuthService } from "../modules/login/services/auth.service";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+    // APIs que não terão o cabeçalho de autenticação
     private bypassUris = [
         '/login',
         '/auth', 
@@ -14,10 +15,15 @@ export class TokenInterceptor implements HttpInterceptor {
     constructor(private authService: AuthService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        // Se a URL da requisição for uma das URLs do ByPass
+        // Apenas retornar a requisição sem os headers
         if (this._isBypassUrls(req.url)) {
           return next.handle(req);
         }
+
+        // Obtém o token de autenticação
         const token = this.authService.getAccessToken();
+        // Adiciona o token ao cabeçalho
         req = addToken(req, token);
         return next.handle(req);
     }
